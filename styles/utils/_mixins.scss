@@ -1,0 +1,28 @@
+@use '../base/variables';
+
+@mixin flexbox($justify: center, $align: center, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+// mixins para animações
+@mixin transition($properties...) { //OS 3 PONTOS SERVEM PARA APLICAR EM VÁRIOS
+    $transition: $properties variables.$transition-duration ease-in-out;
+}
+
+// mixin para responsividade
+@mixin respond-to($breakpoint) {
+
+    @if $breakpoint == small {
+        @media (max-width: 37.5rem) { @content; }
+    } @else if $breakpoint == medium {
+        @media (max-width: 56.25rem) { @content; }    
+    }  @else if $breakpoint == large {
+        @media (max-width: 75rem) { @content; }
+    } @else if $breakpoint == custom-64 {
+        @media (max-width: 64rem) { @content; }
+    }
+    
+}
